@@ -35,7 +35,7 @@ class _SearchPageState extends State<SearchPage> {
       isLoading = true;
     });
 
-    var response = await Network.GET(Network.API_SEARCH_PHOTOS, Network.paramsSearchPhotos("samsung", 1));
+    var response = await Network.GET(Network.API_SEARCH_PHOTOS, Network.paramsSearchPhotos("Unsplash", 1));
     SearchPhotosRes searchPhotosRes = Network.parseSearchPhotos(response!);
     LogService.i(searchPhotosRes.results.length.toString());
 
@@ -57,7 +57,6 @@ class _SearchPageState extends State<SearchPage> {
       backgroundColor: Colors.black,
       body:  Stack(
         children: [
-
           MasonryGridView.builder(
             gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemCount: items.length,

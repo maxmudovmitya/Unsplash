@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ngdemo14/pages/photos_page.dart';
 
 import '../models/collection_model.dart';
 import '../services/http_service.dart';
@@ -15,6 +16,15 @@ class _CollectionPageState extends State<CollectionPage> {
 
   bool isLoading = false;
   List<Collection> items = [];
+
+  _callPhotosPage(Collection collection){
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context){
+      return PhotosPage(
+      collection: collection,
+      );
+    }));
+  }
 
 
   apiCollectionList() async{
@@ -61,12 +71,17 @@ class _CollectionPageState extends State<CollectionPage> {
     );
   }
   Widget _itemOfCollection(Collection collection) {
-    return Container(
-      width: double.infinity,
-      child: Stack(
-        children: [
-          Image.network(collection.coverPhoto.urls.small!, fit: BoxFit.cover, height: 300, width: double.infinity,)
-        ],
+    return GestureDetector(
+      onTap: () {
+        _callPhotosPage(collection);
+      },
+      child: Container(
+        width: double.infinity,
+        child: Stack(
+          children: [
+            Image.network(collection.coverPhoto.urls.small!, fit: BoxFit.cover, height: 300, width: double.infinity,)
+          ],
+        ),
       ),
     );
   }

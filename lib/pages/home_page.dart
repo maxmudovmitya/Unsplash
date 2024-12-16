@@ -23,11 +23,7 @@ class _HomePageState extends State<HomePage> {
 
 
 
-apiCollectionPhotos() async{
-  var response = await Network.GET(Network.API_COLLECTIONS_PHOTOS.replaceFirst(":id", "sPgfgvR6DMo"), Network.paramsCollectionsPhotos(1));
-  List<Photo> photos = Network.parseCollectionsPhotos(response!);
-  LogService.i(photos.length.toString());
-}
+
 
 @override
   void initState() {
