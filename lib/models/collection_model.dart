@@ -1,3 +1,5 @@
+
+
 // To parse this JSON data, do
 //
 //     final collectionListRes = collectionListResFromJson(jsonString);
